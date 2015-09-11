@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="Content/main.css" rel="stylesheet" />
+    <title>地图页</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div id="map"></div>
+    </div>
+    <script src="Scripts/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=pPmyxQCGHr9MYfmadPEcjODQ"></script>
+    <script type="text/javascript">
+        var map=null;
+        $(function () {
+            map = new BMap.Map("map");
+            map.centerAndZoom(new BMap.Point(116.404, 39.915), 4);
+            var tileLayer = new BMap.TileLayer({ isTransparentPng: false });
+            titleLayer.getTilesUrl = function (tileCoord, zoom) {
+                var x = tileCoord.x;//TODO 映射成 
+                var y = tileCoord.y;
+                return 'http://121.40.126.5:5057/tiles/' + zoom + '/' + x + '_' + (swap(zoom) - parseInt(y)) + '.jpg';
+            }
+        });
+    </script>
+</body>
+</html>
